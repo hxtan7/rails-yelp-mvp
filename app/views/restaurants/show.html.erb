@@ -3,9 +3,16 @@
 <p><strong>Restaurant address: </strong><%= @restaurant.address %></p>
 <p><strong>Restaurant phone number: </strong><%= @restaurant.phone_number %></p>
 <p><strong>Restaurant category: </strong><%= @restaurant.category %></p>
-   <%# <strong>Restaurant review: </strong><%= restaurant.review %>
-<br>
+
+<strong>Restaurant review: </strong><% reviews = Review.where(restaurant: @restaurant).order(created_at: :desc) %>
+      <% reviews.each do |review| %>
+        <p><%= review.content %> - <%= "*" * review.rating %></p>
+      <% end %>
+<br><br>
 <%= link_to "Edit #{@restaurant.name}",
-            edit_restaurant_path(@restaurant) %>
+            edit_restaurant_path(@restaurant), class: "btn btn-primary mb-2" %>
+<br>
+<%= link_to "Add review for #{@restaurant.name}",
+            new_restaurant_review_path(@restaurant), class: "btn btn-primary mb-2" %>
 <br>
 <%= link_to 'Back to list', restaurants_path %>
