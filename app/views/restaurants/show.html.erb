@@ -1,0 +1,11 @@
+<h2>RESTAURANT DETAILS</h2><br>
+<p><strong>Restaurant name: </strong><%= @restaurant.name %></p>
+<p><strong>Restaurant address: </strong><%= @restaurant.address %></p>
+<p><strong>Restaurant phone number: </strong><%= @restaurant.phone_number %></p>
+<p><strong>Restaurant category: </strong><%= @restaurant.category %></p>
+   <%# <strong>Restaurant review: </strong><%= restaurant.review %>
+<br>
+<%= link_to "Edit #{@restaurant.name}",
+            edit_restaurant_path(@restaurant) %>
+<br>
+<%= link_to 'Back to list', restaurants_path %>
